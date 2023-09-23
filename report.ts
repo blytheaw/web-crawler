@@ -8,7 +8,7 @@ export function printReport(pages: { [url: string]: number }) {
   }
 }
 
-function sortPages(pages: { [url: string]: number }) {
+export function sortPages(pages: { [url: string]: number }) {
   const pagesArr = Object.keys(pages)
     .map((p) => ({ url: p, count: pages[p] }))
     .sort((x, y) => {

@@ -9,7 +9,7 @@ bun install
 To run:
 
 ```bash
-bun run main.ts
+bun run main.ts https://example.com
 ```
 
 To test:
