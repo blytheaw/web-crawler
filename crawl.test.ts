@@ -1,13 +1,7 @@
-const { test, expect, describe } = require("@jest/globals");
-const { normalizeURL, getURLsFromHTML } = require("./crawl.js");
+import { test, expect, describe } from "@jest/globals";
+import { normalizeURL, getURLsFromHTML } from "./crawl.js";
 
 describe("normalizeURL", () => {
-  test("non-string input", () => {
-    expect(() => {
-      normalizeURL(2);
-    }).toThrowError();
-  });
-
   test("https trailing slash", () => {
     expect(normalizeURL("https://domain.com/path/")).toStrictEqual(
       "domain.com/path"
@@ -60,7 +54,7 @@ describe("getURLsfromHTML", () => {
 `;
 
   test("no relative URLs", () => {
-    const result = getURLsFromHTML(htmlBody);
+    const result = getURLsFromHTML(htmlBody, baseUrl);
 
     result.forEach((a) => {
       expect(a.startsWith("/")).toStrictEqual(false);

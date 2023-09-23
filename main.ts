@@ -1,5 +1,6 @@
-const process = require("node:process");
-const { crawlPage } = require("./crawl.js");
+import process from "node:process";
+import { crawlPage } from "./crawl";
+import { printReport } from "./report";
 
 async function main() {
   if (process.argv.length != 3) {
@@ -10,7 +11,9 @@ async function main() {
   const baseUrl = process.argv[2];
   console.log(`Starting crawler at URL: ${baseUrl}`);
 
-  await crawlPage(baseUrl);
+  const pages = await crawlPage(baseUrl, baseUrl, {});
+
+  printReport(pages);
 }
 
 main();
